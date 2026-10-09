@@ -1,19 +1,5 @@
 #include <iostream>
-
-double limitSpeed(double requested)
-{
-    if (requested > 33.5)
-    {
-        return 33.5;
-    }
-    else if(requested < -33.5){
-        return -33.5;
-    }
-    else{
-        return requested;
-    }
-
-}
+#include "Motor.h"
 
 int main() {
     int motor_id = 1;
