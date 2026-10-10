@@ -2,27 +2,14 @@
 #include "Motor.h"
 
 int main() {
-    int motor_id = 1;
-    double speed = 50.0;
-    double inputs[4] = {50.0, -40.0, 20.0, 0.0};
-    double expected[4] = {33.5, -33.5, 20.0, 0.0};
+   
 
-    for (int i = 0; i < 4; i++)
-    {
-      speed = limitSpeed(inputs[i]);
-      if (speed == expected[i] )
-      {
-        std::cout << "PASS" <<"\n";
-      }
-      else{
-        std::cout <<"FAIL" << "\n";
-      }
+    Motor leftMotor(1);
+    leftMotor.setSpeed(50.0);
+    std::cout << "\nObject ID:" << leftMotor.getId() << "\n";
+    std::cout << "Object Speed:" << leftMotor.getSpeed() << "\n";
+    leftMotor.stop();
+    std::cout << "After speed:" << leftMotor.getSpeed() << "\n";
 
-    }
-    
-    
-
-    std::cout << "Motor ID:" << motor_id <<"\n";
-    std::cout << "Speed:" <<speed ;
     return 0;
 }
