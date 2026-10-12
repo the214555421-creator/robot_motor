@@ -11,3 +11,25 @@ void setTrackSpeeds(
     right.setSpeed(rightSpeed);
 
 }
+
+void turnInPlace(
+    Motor& left,
+    Motor& right,
+    double speed)
+    {
+        setTrackSpeeds(left,right,-speed,speed);
+
+    }
+
+void calculateTrackSpeeds(
+    double v,
+    double omega,
+    double B,
+    double& leftSpeed,
+    double& rightSpeed)
+    {
+        
+        leftSpeed = v - (omega * B) / 2;
+        rightSpeed = v + (omega * B) / 2;
+    
+    }
