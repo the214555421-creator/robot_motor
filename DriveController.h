@@ -37,3 +37,10 @@ void driveDifferential(
     double omega,
     double B,
     double scale);
+
+    // 对左右电机指令进行等比例限幅
+// maxCommand: 允许的最大指令绝对值，要求大于0
+void limitTrackCommands(
+    double& leftCommand,
+    double& rightCommand,
+    double maxCommand);

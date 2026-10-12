@@ -17,17 +17,19 @@ double limitSpeed(double requested)
    
 }
 
-// 定义Motor类，得到id和速度
+// 定义Motor类，由id和速度组成
      Motor::Motor(int motorId)
         : id_(motorId),speed_(0.0){
         
         }
 
+        //返回Motor的id
         int Motor::getId() const
         {
             return id_;
         }
 
+        //返回Motor的速度
         double Motor::getSpeed() const
         {
             return speed_;

@@ -1,6 +1,8 @@
 #include "DriveController.h"
+#include <cmath>
+#include <algorithm>
 
-//把给的速度限制后给到对应电机
+//将指令速度写入左右 Motor 对象
 void setTrackSpeeds(
     Motor& left,
     Motor& right,
@@ -64,6 +66,26 @@ void driveDifferential(
         calculateTrackSpeeds(v,omega,B,leftSpeed,rightSpeed);
         double leftCommand = trackSpeedToCommand(leftSpeed, scale);
         double rightCommand = trackSpeedToCommand(rightSpeed, scale);
+        limitTrackCommands(leftCommand,rightCommand,33.5);
         setTrackSpeeds(left, right, leftCommand, rightCommand);
     }
 
+//实现限幅逻辑，速度最大等比缩小
+    void limitTrackCommands(
+    double& leftCommand,
+    double& rightCommand,
+    double maxCommand)
+{
+    double maxAbs = std::max(
+        std::abs(leftCommand),
+        std::abs(rightCommand)
+    );
+
+    if (maxAbs > maxCommand)
+    {
+       double k = maxCommand / maxAbs;
+       
+       leftCommand *= k;
+       rightCommand *=k;  
+    }
+}
