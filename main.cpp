@@ -21,12 +21,13 @@ int main() {
   //turnInPlace(leftMotor,rightMotor,20);
   //std::cout << "Left Motor Speed:" << leftMotor.getSpeed() << "\n";
   //std::cout << "Right Motor Speed:" << rightMotor.getSpeed() << "\n";
-  double leftSpeed;
-  double rightSpeed;
-  calculateTrackSpeeds(0.2,1.0,0.2,leftSpeed,rightSpeed);
-  std::cout << "Left Speed:" << leftSpeed << "\n";
-  std::cout << "Right Speed:" << rightSpeed << "\n";
 
 
-    return 0;
+  
+  driveDifferential(leftMotor, rightMotor, 0.2, 1.0, 0.2, 100);
+  std::cout << "Left Speed:" << leftMotor.getSpeed() << "\n";
+  std::cout << "Right Speed:" << rightMotor.getSpeed() << "\n";
+
+  
+
 }
