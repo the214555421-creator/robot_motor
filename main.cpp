@@ -10,8 +10,19 @@ int main() {
   Motor leftMotor(1);
   Motor rightMotor(2);
   
-  driveDifferential(leftMotor, rightMotor, 0.3, 1.0, 0.2, 100);
-  std::cout << "Left Speed:" <<leftMotor.getSpeed() << "\n";
-  std::cout << "Right speed:" <<rightMotor.getSpeed() << "\n";
+ setTrackSpeeds(leftMotor, rightMotor, 20, 30);
+
+setTrackSpeedsSafe(
+    leftMotor,
+    rightMotor,
+    10,
+    15,
+    false
+);
+
+std::cout << "Left Speed:" << leftMotor.getSpeed() << "\n";
+std::cout << "Right Speed:" << rightMotor.getSpeed() << "\n";
+
+
 
 }

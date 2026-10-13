@@ -81,11 +81,43 @@ void driveDifferential(
         std::abs(rightCommand)
     );
 
-    if (maxAbs > maxCommand)
+    // 异常速度指令提前退出
+    if (maxCommand <= 0)
+    {
+        leftCommand = 0;
+        rightCommand = 0;
+        return ;
+    }
+
+     if (maxAbs > maxCommand)
     {
        double k = maxCommand / maxAbs;
        
        leftCommand *= k;
        rightCommand *=k;  
+    }
+}
+
+// 同时清零左右履带电机的速度指令
+void stopAll(Motor& left, Motor& right){
+   left.stop();
+   right.stop();
+}
+
+// 根据紧急停止状态决定清零电机指令或执行运动指令
+void setTrackSpeedsSafe(
+    Motor& left,
+    Motor& right,
+    double leftSpeed,
+    double rightSpeed,
+    bool emergencyStopActive)
+{
+    if (emergencyStopActive)
+    {
+         stopAll(left,right);
+    }
+    else
+    {
+       setTrackSpeeds(left,right,leftSpeed,rightSpeed);
     }
 }

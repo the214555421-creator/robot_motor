@@ -44,3 +44,13 @@ void limitTrackCommands(
     double& leftCommand,
     double& rightCommand,
     double maxCommand);
+
+    // 同时清零左右履带电机的速度指令
+void stopAll(Motor& left, Motor& right);
+
+void setTrackSpeedsSafe(
+    Motor& left,
+    Motor& right,
+    double leftSpeed,
+    double rightSpeed,
+    bool emergencyStopActive);
