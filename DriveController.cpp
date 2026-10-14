@@ -51,7 +51,7 @@ double trackSpeedToCommand(
 
 
 
-// 根据机器人线速度和角速度计算左右履带速度，转换指令后更新电机对象
+// 根据机器人线速度和角速度计算左右履带速度，转换指令后给电机对象
 // v: m/s, omega: rad/s, B: m, scale: 测试转换系数
 void driveDifferential(
     Motor& left,
